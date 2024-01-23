@@ -1,6 +1,7 @@
 "use client";
 
 import DeckGL from "@deck.gl/react/typed";
+import { ScatterplotLayer } from "@deck.gl/layers/typed";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect, useState } from "react";
 import {
@@ -20,10 +21,11 @@ export function MainMap() {
     longitude: -121.87,
     latitude: 37.33,
   });
+
   // Viewport settings
   const location = {
     ...currentLocation,
-    zoom: 13,
+    zoom: 14,
     pitch: 0,
     bearing: 0,
   };
@@ -41,9 +43,33 @@ export function MainMap() {
     });
   }, []);
 
+  type LayerData = {
+    name: string;
+    coordinates: [number, number];
+    radius: number;
+  };
+
+  const layers = [
+    new ScatterplotLayer<LayerData>({
+      id: "You are here",
+      data: [
+        {
+          name: "Me",
+          coordinates: [currentLocation.longitude, currentLocation.latitude],
+          radius: 32,
+        },
+      ],
+      stroked: false,
+      filled: true,
+      getPosition: (d) => d.coordinates,
+      getRadius: (d) => d.radius,
+      getFillColor: [255, 0, 0],
+    }),
+  ];
+
   return (
     <div className="relative h-full w-full">
-      <DeckGL initialViewState={location} controller>
+      <DeckGL initialViewState={location} controller layers={layers}>
         <Map
           attributionControl={false}
           mapStyle="mapbox://styles/mapbox/light-v10"

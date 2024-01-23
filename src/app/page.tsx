@@ -42,7 +42,7 @@ export default async function Home() {
           </div>
         </div>
       </header>
-      <main className="container h-[80vh] pt-10">
+      <main className="h-[calc(100vh_-_4.1rem)]">
         <div className="h-full">
           <MainMap />
         </div>
