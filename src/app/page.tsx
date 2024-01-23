@@ -44,7 +44,7 @@ export default async function Home() {
       </header>
       <main className="h-[calc(100vh_-_4.1rem)]">
         <div className="h-full">
-          <MainMap />
+          <MainMap noOverlap fontSize={28} />
         </div>
       </main>
     </>
