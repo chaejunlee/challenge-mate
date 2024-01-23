@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MainNav } from "./_components/main-nav";
 import Image from "next/image";
+import React from "react";
+import { MainMap } from "./MainMap";
 
 export default async function Home() {
   noStore();
@@ -30,7 +32,7 @@ export default async function Home() {
 
   return (
     <>
-      <header>
+      <header className="">
         <div className="border-b">
           <div className="flex h-16 items-center px-4">
             <Link href="/">
@@ -40,7 +42,11 @@ export default async function Home() {
           </div>
         </div>
       </header>
-      <main className="container"></main>
+      <main className="container h-[80vh] pt-10">
+        <div className="h-full">
+          <MainMap />
+        </div>
+      </main>
     </>
   );
 }
