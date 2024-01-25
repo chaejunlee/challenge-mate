@@ -1,10 +1,15 @@
 "use client";
 
+import { Route, getRoute } from "@/lib/getRoute";
+import { CollisionFilterExtension } from "@deck.gl/extensions/typed";
+import {
+  TextLayer,
+  GeoJsonLayer,
+  ScatterplotLayer,
+} from "@deck.gl/layers/typed";
 import DeckGL from "@deck.gl/react/typed";
-import { TextLayer, IconLayer } from "@deck.gl/layers/typed";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect, useState } from "react";
-import { CollisionFilterExtension } from "@deck.gl/extensions/typed";
 import {
   AttributionControl,
   FullscreenControl,
@@ -13,12 +18,9 @@ import {
   ScaleControl,
 } from "react-map-gl";
 
-// Set your mapbox access token here
-const MAPBOX_ACCESS_TOKEN =
-  "pk.eyJ1IjoiY2hhZWp1bmxlZWUiLCJhIjoiY2xycGs1d3JrMDI2cjJyczdhYmNiZmhvYiJ9.F8shYQi9nomU8xx2ng83fQ";
-
 const SHELTER_RGB = [33, 33, 233];
-const WORK_RGB = [233, 33, 33];
+const ROAD_RGB = [33, 33, 33] as [number, number, number];
+const DESTINATION_RGB = [100, 100, 100];
 
 const ICON_MAPPING = {
   marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
@@ -31,10 +33,12 @@ export function MainMap({
   noOverlap?: boolean;
   fontSize?: number;
 }) {
-  const [currentLocation, getCurrentLocation] = useState({
+  const [currentLocation, setCurrentLocation] = useState({
     longitude: -121.87,
     latitude: 37.33,
   });
+  const [destination, setDestination] = useState<[number, number] | null>(null);
+  const [geoJson, setGeoJson] = useState<Route | null>(null);
 
   // Viewport settings
   const location = {
@@ -53,13 +57,27 @@ export function MainMap({
       return;
     }
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position);
-      getCurrentLocation({
+      setCurrentLocation({
         longitude: position.coords.longitude,
         latitude: position.coords.latitude,
       });
     });
   }, []);
+
+  useEffect(() => {
+    if (destination) {
+      const route = async () => {
+        const data = await getRoute(
+          [currentLocation.longitude, currentLocation.latitude],
+          destination,
+        );
+        if (data) {
+          setGeoJson(data);
+        }
+      };
+      route().catch(console.error);
+    }
+  }, [destination, currentLocation]);
 
   type LayerData = {
     name: string;
@@ -69,45 +87,40 @@ export function MainMap({
     price: number;
   };
 
+  const locationPoint = [
+    {
+      name: "Me",
+      coordinates: [currentLocation.longitude, currentLocation.latitude],
+      radius: 32,
+      color: [255, 0, 0],
+    },
+    destination && {
+      name: "Destination",
+      coordinates: destination,
+      radius: 32,
+      color: DESTINATION_RGB,
+    },
+  ];
+
   const layers = [
-    new IconLayer<LayerData>({
-      id: "icon-layer",
-      data: [
-        {
-          name: "Me",
-          coordinates: [currentLocation.longitude, currentLocation.latitude],
-          radius: 16,
-          color: [255, 0, 0],
-        },
-      ],
-      pickable: true,
-      iconAtlas:
-        "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png",
-      iconMapping: ICON_MAPPING,
-      getIcon: () => "marker",
-      sizeScale: 12,
-      getPosition: (d) => d.coordinates,
-      getSize: 5,
-      getColor: (d) => d.color,
-    }),
     new TextLayer<LayerData>({
       id: "shelter-text-layer",
       data: [
         {
-          name: "Shelter A",
-          coordinates: [-121.878, 37.346],
+          name: "HomeFirst - Sobrato House Youth Center",
+          coordinates: [-121.88, 37.32],
           color: SHELTER_RGB,
           price: 1000,
         },
         {
-          name: "Shelter B",
-          coordinates: [-121.868, 37.33],
+          name: "LifeMoves | Montgomery Street Inn",
+          coordinates: [-121.9, 37.33],
           color: SHELTER_RGB,
           price: 2000,
         },
         {
-          name: "Shelter C",
-          coordinates: [-121.888, 37.326],
+          name: "Family Supportive Housing",
+          coordinates: [-121.86, 37.36],
           color: SHELTER_RGB,
           price: 3000,
         },
@@ -120,7 +133,7 @@ export function MainMap({
       getPosition: (d) => d.coordinates,
       getText: (d) => d.name,
       getColor: (d) => d.color,
-      getSize: (d) => Math.pow(d.price, 0.5) / 40,
+      getSize: (d) => Math.pow(d.price, 0.2) / 40,
 
       sizeScale: fontSize,
       sizeMaxPixels,
@@ -136,53 +149,51 @@ export function MainMap({
         sizeMinPixels: sizeMinPixels * 2,
       },
       extensions: [new CollisionFilterExtension()],
+
+      onClick: (e) => {
+        if (!e.object) {
+          return;
+        }
+        const object = e.object as {
+          coordinates: [number, number];
+        };
+        if (!object) {
+          return;
+        }
+        const coordinates = object.coordinates;
+
+        if (coordinates)
+          if (coordinates[0] == null || coordinates[1] == null) {
+            return;
+          }
+        setDestination([coordinates[0], coordinates[1]]);
+      },
     }),
-    new TextLayer<LayerData>({
-      id: "work-text-layer",
-      data: [
-        {
-          name: "Work A",
-          coordinates: [-121.864, 37.336],
-          color: WORK_RGB,
-          price: 1000,
-        },
-        {
-          name: "Work B",
-          coordinates: [-121.898, 37.336],
-          color: WORK_RGB,
-          price: 2000,
-        },
-        {
-          name: "Work C",
-          coordinates: [-121.855, 37.331],
-          color: WORK_RGB,
-          price: 3000,
-        },
-      ],
-      characterSet: "auto",
-      fontSettings: {
-        buffer: 8,
-      },
+
+    geoJson
+      ? new GeoJsonLayer({
+          ...geoJson,
+          pickable: true,
+          stroked: false,
+          filled: true,
+          extruded: true,
+          pointType: "circle",
+          lineWidthScale: 10,
+          lineWidthMinPixels: 2,
+          getFillColor: [160, 160, 180, 200],
+          getLineColor: (d) => ROAD_RGB,
+          getPointRadius: 100,
+          getLineWidth: 2,
+          getElevation: 5,
+        })
+      : null,
+    new ScatterplotLayer<LayerData>({
+      id: "scatterplot-layer",
+      data: locationPoint.filter(Boolean),
       pickable: true,
       getPosition: (d) => d.coordinates,
-      getText: (d) => d.name,
+      getRadius: (d) => d.radius!,
       getColor: (d) => d.color,
-      getSize: (d) => Math.pow(d.price, 0.5) / 40,
-
-      sizeScale: fontSize,
-      sizeMaxPixels,
-      sizeMinPixels,
-      maxWidth: 64 * 10,
-
-      // @ts-expect-error - collisionEnabled is not in the types
-      collisionEnabled: noOverlap,
-      getCollisionPriority: (d: LayerData) => Math.log10(d.price),
-      collisionTestProps: {
-        sizeScale: fontSize * 2,
-        sizeMaxPixels: sizeMaxPixels * 2,
-        sizeMinPixels: sizeMinPixels * 2,
-      },
-      extensions: [new CollisionFilterExtension()],
     }),
   ];
 
@@ -192,7 +203,7 @@ export function MainMap({
         <Map
           attributionControl={false}
           mapStyle="mapbox://styles/mapbox/light-v10"
-          mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
+          mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         >
           <NavigationControl position="top-right" />
           <FullscreenControl position="top-right" />
