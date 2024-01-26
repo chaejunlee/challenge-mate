@@ -29,24 +29,26 @@ const ICON_MAPPING = {
 export function MainMap({
   noOverlap = false,
   fontSize = 32,
+  destination,
+  setDestination,
 }: {
   noOverlap?: boolean;
   fontSize?: number;
+  destination: [number, number] | null;
+  setDestination: (destination: [number, number] | null) => void;
 }) {
   const [currentLocation, setCurrentLocation] = useState({
     longitude: -121.87,
     latitude: 37.33,
   });
-  const [destination, setDestination] = useState<[number, number] | null>(null);
-  const [geoJson, setGeoJson] = useState<Route | null>(null);
 
-  // Viewport settings
-  const location = {
+  const [geoJson, setGeoJson] = useState<Route | null>(null);
+  const [location, setLocation] = useState({
     ...currentLocation,
-    zoom: 14,
+    zoom: 13,
     pitch: 0,
     bearing: 0,
-  };
+  });
 
   const scale = 2 ** location.zoom;
   const sizeMaxPixels = (scale / 3) * fontSize;
@@ -61,6 +63,11 @@ export function MainMap({
         longitude: position.coords.longitude,
         latitude: position.coords.latitude,
       });
+      setLocation((prev) => ({
+        ...prev,
+        longitude: position.coords.longitude,
+        latitude: position.coords.latitude,
+      }));
     });
   }, []);
 
@@ -73,6 +80,11 @@ export function MainMap({
         );
         if (data) {
           setGeoJson(data);
+          setLocation((prev) => ({
+            ...prev,
+            longitude: (currentLocation.longitude + destination[0]) / 2,
+            latitude: (currentLocation.latitude + destination[1]) / 2,
+          }));
         }
       };
       route().catch(console.error);
@@ -91,18 +103,43 @@ export function MainMap({
     {
       name: "Me",
       coordinates: [currentLocation.longitude, currentLocation.latitude],
-      radius: 32,
+      radius: 64,
       color: [255, 0, 0],
     },
     destination && {
       name: "Destination",
       coordinates: destination,
-      radius: 32,
+      radius: 64,
       color: DESTINATION_RGB,
     },
   ];
 
   const layers = [
+    geoJson
+      ? new GeoJsonLayer({
+          ...geoJson,
+          pickable: true,
+          stroked: false,
+          filled: true,
+          extruded: true,
+          pointType: "circle",
+          lineWidthScale: 10,
+          lineWidthMinPixels: 2,
+          getFillColor: [160, 160, 180, 200],
+          getLineColor: (d) => ROAD_RGB,
+          getPointRadius: 100,
+          getLineWidth: 2,
+          getElevation: 5,
+        })
+      : null,
+    new ScatterplotLayer<LayerData>({
+      id: "scatterplot-layer",
+      data: locationPoint.filter(Boolean),
+      pickable: true,
+      getPosition: (d) => d.coordinates,
+      getRadius: (d) => d.radius!,
+      getColor: (d) => d.color,
+    }),
     new TextLayer<LayerData>({
       id: "shelter-text-layer",
       data: [
@@ -168,32 +205,6 @@ export function MainMap({
           }
         setDestination([coordinates[0], coordinates[1]]);
       },
-    }),
-
-    geoJson
-      ? new GeoJsonLayer({
-          ...geoJson,
-          pickable: true,
-          stroked: false,
-          filled: true,
-          extruded: true,
-          pointType: "circle",
-          lineWidthScale: 10,
-          lineWidthMinPixels: 2,
-          getFillColor: [160, 160, 180, 200],
-          getLineColor: (d) => ROAD_RGB,
-          getPointRadius: 100,
-          getLineWidth: 2,
-          getElevation: 5,
-        })
-      : null,
-    new ScatterplotLayer<LayerData>({
-      id: "scatterplot-layer",
-      data: locationPoint.filter(Boolean),
-      pickable: true,
-      getPosition: (d) => d.coordinates,
-      getRadius: (d) => d.radius!,
-      getColor: (d) => d.color,
     }),
   ];
 

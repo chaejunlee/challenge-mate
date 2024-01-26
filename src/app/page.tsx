@@ -6,7 +6,9 @@ import { Button } from "@/components/ui/button";
 import { MainNav } from "./_components/main-nav";
 import Image from "next/image";
 import React from "react";
-import { MainMap } from "./MainMap";
+import { MainMap } from "./main-map";
+import Task from "./task";
+import Main from "./main";
 
 export default async function Home() {
   noStore();
@@ -34,18 +36,22 @@ export default async function Home() {
     <>
       <header className="">
         <div className="border-b">
-          <div className="flex h-16 items-center px-4">
+          <div className="flex h-16 items-center px-12">
             <Link href="/">
               <Image src="/logo.png" alt="" width="32" height="32" />
             </Link>
-            <MainNav className="mx-6" />
+            <MainNav className="mx-6 grow" />
+            <Link
+              href="/api/auth/signout"
+              className="justify-end text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              Sign Out
+            </Link>
           </div>
         </div>
       </header>
-      <main className="h-[calc(100vh_-_4.1rem)]">
-        <div className="h-full">
-          <MainMap noOverlap fontSize={28} />
-        </div>
+      <main className="grid h-[calc(100vh_-_4.1rem)] grid-cols-[40ch_minmax(0,1fr)]">
+        <Main />
       </main>
     </>
   );
