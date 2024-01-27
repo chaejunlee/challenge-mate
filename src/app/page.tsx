@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { MainNav } from "./_components/main-nav";
 import Image from "next/image";
 import React from "react";
-import Main from "./appointment/main";
+import Landing from "./landing";
 
 export default async function Home() {
   noStore();
@@ -48,8 +48,8 @@ export default async function Home() {
           </div>
         </div>
       </header>
-      <main className="grid h-[calc(100vh_-_4.1rem)] grid-cols-[35ch_minmax(0,1fr)]">
-        <Main />
+      <main>
+        <Landing />
       </main>
     </>
   );
