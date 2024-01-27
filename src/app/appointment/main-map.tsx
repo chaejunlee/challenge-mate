@@ -20,8 +20,8 @@ import {
 } from "react-map-gl";
 import { shelter } from "./shelter";
 
-const ROAD_RGB = [33, 33, 33] as [number, number, number];
-const DESTINATION_RGB = [100, 100, 100];
+export const ROAD_RGB = [33, 33, 33] as [number, number, number];
+export const DESTINATION_RGB = [100, 100, 100];
 
 const ICON_MAPPING = {
   marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
