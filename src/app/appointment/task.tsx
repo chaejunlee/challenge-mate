@@ -12,8 +12,8 @@ import Link from "next/link";
 
 export default function Task() {
   return (
-    <div className="px-6 pt-6">
-      <h1 className="mb-6 text-2xl font-bold">Today&apos;s Task</h1>
+    <div className="p-6">
+      <h1 className="mb-6 text-3xl font-bold">Today&apos;s Task</h1>
       <Card>
         <CardHeader>
           <CardTitle>Receiving Depression Therapy</CardTitle>

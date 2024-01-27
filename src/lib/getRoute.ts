@@ -15,7 +15,6 @@ export const getRoute = async (
   }
 
   const route = data.geometry.coordinates;
-  console.log(route);
   const geojson = {
     type: "Feature",
     properties: {},

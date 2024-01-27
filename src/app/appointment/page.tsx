@@ -3,10 +3,10 @@ import { unstable_noStore as noStore } from "next/cache";
 import { getServerAuthSession } from "@/server/auth";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { MainNav } from "./_components/main-nav";
+import { MainNav } from "../_components/main-nav";
 import Image from "next/image";
 import React from "react";
-import Main from "./appointment/main";
+import Main from "./main";
 
 export default async function Home() {
   noStore();

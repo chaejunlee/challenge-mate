@@ -1,6 +1,5 @@
 "use client";
-
-import { Route, getRoute } from "@/lib/getRoute";
+import { type Route, getRoute } from "@/lib/getRoute";
 import { CollisionFilterExtension } from "@deck.gl/extensions/typed";
 import {
   TextLayer,
@@ -8,7 +7,7 @@ import {
   ScatterplotLayer,
 } from "@deck.gl/layers/typed";
 import DeckGL from "@deck.gl/react/typed";
-import "mapbox-gl/dist/mapbox-gl.css";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   AttributionControl,
@@ -17,14 +16,7 @@ import {
   NavigationControl,
   ScaleControl,
 } from "react-map-gl";
-
-const SHELTER_RGB = [33, 33, 233];
-const ROAD_RGB = [33, 33, 33] as [number, number, number];
-const DESTINATION_RGB = [100, 100, 100];
-
-const ICON_MAPPING = {
-  marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
-};
+import { DESTINATION_RGB, ROAD_RGB, SHELTER_RGB } from "./main-map";
 
 export function MainMap({
   noOverlap = false,
@@ -49,6 +41,10 @@ export function MainMap({
     pitch: 0,
     bearing: 0,
   });
+  const router = useRouter();
+
+  const url = new URL(window.location.href);
+  const params = new URLSearchParams(url.search);
 
   const scale = 2 ** location.zoom;
   const sizeMaxPixels = (scale / 3) * fontSize;
@@ -203,6 +199,13 @@ export function MainMap({
           if (coordinates[0] == null || coordinates[1] == null) {
             return;
           }
+
+        if (params.has("destination"))
+          params.set("destination", coordinates.join(",") ?? "");
+        else params.append("destination", coordinates.join(",") ?? "");
+
+        router.push(`?${params.toString()}`);
+
         setDestination([coordinates[0], coordinates[1]]);
       },
     }),
