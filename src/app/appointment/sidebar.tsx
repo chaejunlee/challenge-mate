@@ -22,7 +22,7 @@ export default function Sidebar({
     return <Appointment destination={destination} setDateTime={setDateTime} />;
 
   const appointment = getShelter(destination);
-  const [date, time] = dateTime.split("@");
+  const [date, time] = dateTime.split("T");
 
   return (
     <div className="flex h-full flex-col gap-6 p-6">

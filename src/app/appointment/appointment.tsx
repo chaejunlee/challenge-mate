@@ -23,54 +23,39 @@ import Image from "next/image";
 import { getShelter } from "./shelter";
 import { usePathname, useRouter } from "next/navigation";
 import { useQueryString } from "./utils";
-import { useState } from "react";
+import { use, useState } from "react";
+import { saveAppointment, useAppointmentStore } from "@/lib/state";
 
 const timeSlots = {
-  "Feb 14, 2024": [
-    "9:00 AM ~ 9:30 AM",
-    "1:00 PM ~ 1:30 PM",
-    "3:00 PM ~ 3:30 PM",
-  ],
-  "Feb 16, 2024": [
-    "10:00 AM ~ 10:30 AM",
-    "2:00 PM ~ 2:30 PM",
-    "4:00 PM ~ 4:30 PM",
-  ],
-  "Feb 20, 2024": [
-    "9:00 AM ~ 9:30 AM",
-    "1:00 PM ~ 1:30 PM",
-    "3:00 PM ~ 3:30 PM",
-  ],
-  "Feb 22, 2024": [
-    "10:00 AM ~ 10:30 AM",
-    "2:00 PM ~ 2:30 PM",
-    "4:00 PM ~ 4:30 PM",
-  ],
-  "Feb 23, 2024": [
-    "9:00 AM ~ 9:30 AM",
-    "1:00 PM ~ 1:30 PM",
-    "3:00 PM ~ 3:30 PM",
-  ],
+  "Jan 29, 2024": ["9:00 ~ 9:30", "13:00 ~ 13:30", "15:00 ~ 15:30"],
+  "Jan 31, 2024": ["10:00 ~ 10:30", "14:00 ~ 14:30", "16:00 ~ 16:30"],
+  "Feb 14, 2024": ["9:00 ~ 9:30", "13:00 ~ 13:30", "15:00 ~ 15:30"],
+  "Feb 16, 2024": ["10:00 ~ 10:30", "14:00 ~ 14:30", "16:00 ~ 16:30"],
+  "Feb 20, 2024": ["9:00 ~ 9:30", "13:00 ~ 13:30", "15:00 ~ 15:30"],
+  "Feb 22, 2024": ["10:00 ~ 10:30", "14:00 ~ 14:30", "16:00 ~ 16:30"],
+  "Feb 23, 2024": ["9:00 ~ 9:30", "13:00 ~ 13:30", "15:00 ~ 15:30"],
 };
 
 export default function Appointment({
   destination,
-  setDateTime,
 }: {
   destination: [number, number];
-  setDateTime: (dateTime: string | null) => void;
 }) {
   const appointment = getShelter(destination);
   const pathname = usePathname();
   const router = useRouter();
   const createQueryString = useQueryString();
   const [dt, setDt] = useState<string | null>(null);
+  const pushAppointment = useAppointmentStore((state) => state.pushAppointment);
 
   const onClick = () => {
-    if (!dt) return;
+    if (!dt || !appointment) return;
     const queryString = createQueryString("dateTime", dt);
     router.push(`${pathname}?${queryString}`);
-    setDateTime(dt);
+    pushAppointment({
+      ...appointment,
+      dateTime: dt,
+    });
   };
 
   return (
@@ -133,10 +118,10 @@ export default function Appointment({
                                 className="flex items-center space-x-2"
                               >
                                 <RadioGroupItem
-                                  value={`${slot[0]}@${time}`}
-                                  id={`${slot[0]}@${time}`}
+                                  value={`${slot[0]}T${time}`}
+                                  id={`${slot[0]}T${time}`}
                                 />
-                                <Label htmlFor={`${slot[0]}@${time}`}>
+                                <Label htmlFor={`${slot[0]}T${time}`}>
                                   {time}
                                 </Label>
                               </div>
