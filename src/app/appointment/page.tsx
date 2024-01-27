@@ -48,7 +48,7 @@ export default async function Home() {
           </div>
         </div>
       </header>
-      <main className="grid h-[calc(100vh_-_4.1rem)] grid-cols-[35ch_minmax(0,1fr)]">
+      <main className="h-[calc(100vh_-_4.1rem)]">
         <Main />
       </main>
     </>

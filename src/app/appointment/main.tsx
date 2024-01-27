@@ -4,9 +4,16 @@ import { useEffect, useState } from "react";
 import { MainMap } from "./main-map";
 import { useSearchParams } from "next/navigation";
 import Sidebar from "./sidebar";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 
 export default function Main() {
   const [destination, setDestination] = useState<[number, number] | null>(null);
+  const [dateTime, setDateTime] = useState<string | null>(null);
+
   const params = useSearchParams();
 
   useEffect(() => {
@@ -15,23 +22,46 @@ export default function Main() {
         .get("destination")!
         .split(",")
         .map(Number);
-      if (longitude && latitude) setDestination([longitude, latitude]);
+      if (longitude && latitude) {
+        setDestination([longitude, latitude]);
+        return;
+      }
     }
+    setDestination(null);
+  }, [params]);
+
+  useEffect(() => {
+    if (params.has("dateTime")) {
+      const dateTime = params.get("dateTime");
+      if (dateTime) {
+        setDateTime(dateTime);
+        return;
+      }
+    }
+    setDateTime(null);
   }, [params]);
 
   return (
-    <>
-      <div>
-        <Sidebar destination={destination} />
-      </div>
-      <div>
+    <ResizablePanelGroup direction="horizontal">
+      <ResizablePanel defaultSize={40} minSize={10} maxSize={50}>
+        <div className="h-full overflow-scroll">
+          <Sidebar
+            destination={destination}
+            setDestination={setDestination}
+            dateTime={dateTime}
+            setDateTime={setDateTime}
+          />
+        </div>
+      </ResizablePanel>
+      <ResizableHandle />
+      <ResizablePanel defaultSize={70}>
         <MainMap
           noOverlap
           fontSize={28}
           destination={destination}
           setDestination={setDestination}
         />
-      </div>
-    </>
+      </ResizablePanel>
+    </ResizablePanelGroup>
   );
 }
