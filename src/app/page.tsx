@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { MainNav } from "./_components/main-nav";
 import Image from "next/image";
 import React from "react";
+import Main from "./appointment/main";
 import Landing from "./landing";
 
 export default async function Home() {
