@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MainMap } from "./MainMap";
+import { MainMap } from "./main-map";
 import { useSearchParams } from "next/navigation";
 import Sidebar from "./sidebar";
 
