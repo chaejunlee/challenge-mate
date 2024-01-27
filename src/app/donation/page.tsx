@@ -1,6 +1,6 @@
-import "./landing.css";
+import "./style.css";
 
-export default function Landing() {
+export default function Donation() {
   return (
     <div>
       <h1 className="h1">Welcome to Challenge Mates!</h1>
