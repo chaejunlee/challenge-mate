@@ -18,8 +18,7 @@ export default function Sidebar({
   setDateTime: (dateTime: string | null) => void;
 }) {
   if (!destination) return <Task setDestination={setDestination} />;
-  if (!dateTime)
-    return <Appointment destination={destination} setDateTime={setDateTime} />;
+  if (!dateTime) return <Appointment destination={destination} />;
 
   const appointment = getShelter(destination);
   const [date, time] = dateTime.split("T");

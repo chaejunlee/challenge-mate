@@ -132,7 +132,7 @@ export default function Main() {
                   events={events}
                   defaultView="month"
                   defaultDate={new Date()}
-                  style={{ height: 600 }}
+                  style={{ height: 500 }}
                   views={allViews}
                 />
               </div>
