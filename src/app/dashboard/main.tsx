@@ -137,14 +137,6 @@ export default function Main() {
                 <Button variant="destructive" asChild>
                   <Link href="/api/auth/signout">Sign Out</Link>
                 </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    setOpen(true);
-                  }}
-                >
-                  Change Role
-                </Button>
               </CardFooter>
             </Card>
           </div>
