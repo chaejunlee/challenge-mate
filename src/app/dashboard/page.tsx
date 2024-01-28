@@ -42,7 +42,7 @@ export default async function Home() {
           </div>
         </div>
       </header>
-      <main className="h-[calc(100vh_-_4.1rem)]">
+      <main className="min-h-[calc(100vh_-_4.1rem)]">
         <Main />
       </main>
     </>
