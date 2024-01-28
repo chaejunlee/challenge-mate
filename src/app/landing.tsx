@@ -6,7 +6,7 @@ export default function Landing() {
   return (
     <div>
       <div className="grid h-[calc(100vh-4rem)] place-content-center bg-gradient-to-b from-cyan-50 to-white">
-        <h1 className="text-balance bg-gradient-to-tr from-indigo-700 to-cyan-500 bg-clip-text p-6 text-center text-8xl font-bold text-transparent">
+        <h1 className="max-w-4xl text-balance bg-gradient-to-tr from-indigo-700 to-cyan-500 bg-clip-text p-6 text-center text-8xl font-bold text-transparent">
           Welcome to Challenge Mates!
         </h1>
         <p className="mx-auto mt-6 max-w-2xl px-6 text-center">
@@ -27,7 +27,6 @@ export default function Landing() {
           />
         </div>
       </div>
-      <Image className="img" src="/logo.png" alt="" width="200" height="200" />
 
       <h2 className="h2">Our Mission Statement</h2>
       <p className="paragraph">
@@ -64,15 +63,6 @@ export default function Landing() {
           Donate
         </Link>
       </div>
-
-      <footer className="footer"> © Challenge Mates </footer>
-
-      <button className="button1" type="button">
-        Sign In
-      </button>
-      <button className="button2" type="button">
-        Donate
-      </button>
     </div>
   );
 }

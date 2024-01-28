@@ -1,3 +1,13 @@
+html {
+}
+
+.h1 {
+  color: #04538c;
+  font-size: 50px;
+  text-align: center;
+  padding: 20px;
+}
+
 .h2 {
   color: #8ec9c6;
   font-size: 30px;
@@ -11,7 +21,6 @@
   text-align: center;
   padding: 20px;
 }
-
 
 .paragraph {
   color: #04538c;
@@ -77,7 +86,6 @@
   color: white;
 }
 
-
 .content,
 .content1,
 .content2 {
@@ -120,7 +128,6 @@
   display: flex;
   flex-wrap: wrap-reverse;
 }
-
 
 .footer {
   text-align: center;

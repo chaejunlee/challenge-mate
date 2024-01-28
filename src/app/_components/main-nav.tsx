@@ -32,6 +32,18 @@ export function MainNav({
       >
         Rewards
       </Link>
+      <Link
+        href="/about"
+        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+      >
+        About
+      </Link>
+      <Link
+        href="/donation"
+        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+      >
+        Donate
+      </Link>
     </nav>
   );
 }
