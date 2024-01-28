@@ -1,10 +1,6 @@
 import "./style.css";
 
-import { unstable_noStore as noStore } from "next/cache";
-
-import { getServerAuthSession } from "@/server/auth";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { MainNav } from "../_components/main-nav";
 import Image from "next/image";
 import React from "react";
@@ -16,22 +12,22 @@ export default function About() {
         <div className="border-b">
           <div className="flex h-16 items-center px-10">
             <Link href="/">
-              <Image src="/logo.png" alt="" width="32" height="32" />
+              <Image src="/logo.png" alt="" width="200" height="200" />
             </Link>
             <MainNav className="mx-6 grow" />
-            <Link
-              href="/api/auth/signout"
-              className="justify-end text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              Sign Out
-            </Link>
           </div>
         </div>
       </header>
       <main>
         <h1 className="h1">About Us</h1>
 
-        <img className="img" src="/logo.png" width="200" height="200"></img>
+        <Image
+          className="img"
+          src="/logo.png"
+          alt=""
+          width="200"
+          height="200"
+        />
 
         <p className="paragraph">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
@@ -53,7 +49,13 @@ export default function About() {
           <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="our-team">
               <div className="picture">
-                <img className="img-fluid" src="about1.jpeg"></img>
+                <Image
+                  className="img-fluid"
+                  src="/about1.jpeg"
+                  alt=""
+                  width="200"
+                  height="200"
+                />
               </div>
               <div className="team-content">
                 <h3 className="name">Chaejun Lee</h3>
@@ -95,7 +97,13 @@ export default function About() {
           <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="our-team">
               <div className="picture">
-                <img className="img-fluid" src="about2.png"></img>
+                <Image
+                  className="img-fluid"
+                  src="/about2.png"
+                  alt=""
+                  width="200"
+                  height="200"
+                />
               </div>
               <div className="team-content">
                 <h3 className="name">Dasom Lee</h3>
@@ -136,7 +144,13 @@ export default function About() {
           <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="our-team">
               <div className="picture">
-                <img className="img-fluid" src="about3.png"></img>
+                <Image
+                  className="img-fluid"
+                  src="/about3.png"
+                  alt=""
+                  width="200"
+                  height="200"
+                />
               </div>
               <div className="team-content">
                 <h3 className="name">Alex Moon</h3>
@@ -177,7 +191,13 @@ export default function About() {
           <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="our-team">
               <div className="picture">
-                <img className="img-fluid" src="about4.png"></img>
+                <Image
+                  className="img-fluid"
+                  src="/about4.png"
+                  alt=""
+                  width="200"
+                  height="200"
+                />
               </div>
               <div className="team-content">
                 <h3 className="name">Hanbee Cho</h3>
@@ -219,7 +239,13 @@ export default function About() {
           <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="our-team">
               <div className="picture">
-                <img className="img-fluid" src="about5.png"></img>
+                <Image
+                  className="img-fluid"
+                  src="/about5.png"
+                  alt=""
+                  width="200"
+                  height="200"
+                />
               </div>
               <div className="team-content">
                 <h3 className="name">Jihyeok Choi</h3>
@@ -261,7 +287,13 @@ export default function About() {
           <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="our-team">
               <div className="picture">
-                <img className="img-fluid" src="about6.png"></img>
+                <Image
+                  className="img-fluid"
+                  src="/about6.png"
+                  alt=""
+                  height="200"
+                  width="200"
+                />
               </div>
               <div className="team-content">
                 <h3 className="name">Yongjun Kim</h3>
@@ -360,8 +392,6 @@ export default function About() {
             </div>
           </form>
         </div>
-
-        <footer className="footer"> © Challenge Mates </footer>
       </main>
     </>
   );

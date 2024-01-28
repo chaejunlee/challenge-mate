@@ -14,12 +14,6 @@ export default function Donation() {
               <Image src="/logo.png" alt="" width="32" height="32" />
             </Link>
             <MainNav className="mx-6 grow" />
-            <Link
-              href="/api/auth/signout"
-              className="justify-end text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              Sign Out
-            </Link>
           </div>
         </div>
       </header>
@@ -139,7 +133,6 @@ export default function Donation() {
               <i className="fa fa-credit-card"></i> Donate Now
             </div>
           </div>
-          <footer className="footer"> © Challenge Mates </footer>
         </div>
       </main>
     </>
