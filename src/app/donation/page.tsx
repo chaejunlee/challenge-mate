@@ -190,13 +190,12 @@ export default async function Donation() {
                 id="message_input"
               ></textarea>
             </div>
-            <label className="container">
+            <input type="checkbox" id="check" />
+            <label className="mb-2 ml-2" htmlFor="check">
               I would like to donate anonymously.
-              <input type="checkbox" />
-              <span className="checkmark"></span>
             </label>
 
-            <div className="submit flex flex-col items-center justify-center">
+            <div className="submit mt-6 flex flex-col items-center justify-center">
               <input type="submit" value="Donate" id="form_button" />
             </div>
           </form>
