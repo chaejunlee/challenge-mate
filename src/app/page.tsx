@@ -22,13 +22,6 @@ export default async function Home() {
                 <Image src="/logo.png" alt="" width="32" height="32" />
               </Link>
               <MainNav className="mx-6 grow" />
-
-              <Link
-                href="/api/auth/signin"
-                className="justify-end text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-              >
-                Sign In
-              </Link>
             </div>
           </div>
         </header>
@@ -47,7 +40,7 @@ export default async function Home() {
             <Link href="/">
               <Image src="/logo.png" alt="" width="32" height="32" />
             </Link>
-            <MainNav className="mx-6 grow" />
+            <MainNav className="mx-6 grow" signedIn={!!session} />
           </div>
         </div>
       </header>

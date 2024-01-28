@@ -3,8 +3,30 @@ import Link from "next/link";
 import { MainNav } from "../_components/main-nav";
 import Image from "next/image";
 import React from "react";
+import { getServerAuthSession } from "@/server/auth";
+import { Button } from "@/components/ui/button";
 
-export default function Donation() {
+export default async function Donation() {
+  const session = await getServerAuthSession();
+
+  if (!session) {
+    return (
+      <main className="container grid h-screen place-items-center">
+        <div className="grid place-items-center">
+          <h1 className="text-4xl font-bold">Challenge Mate 💪</h1>
+          <p className="mt-2 text-lg">
+            What doesn&apos;t kill you makes you stronger.
+          </p>
+          <Button asChild>
+            <Link href="/api/auth/signin" className="mt-4">
+              Sign Up
+            </Link>
+          </Button>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <>
       <header className="">
@@ -13,7 +35,7 @@ export default function Donation() {
             <Link href="/">
               <Image src="/logo.png" alt="" width="32" height="32" />
             </Link>
-            <MainNav className="mx-6 grow" />
+            <MainNav className="mx-6 grow" signedIn={!!session} />
           </div>
         </div>
       </header>
@@ -106,7 +128,13 @@ export default function Donation() {
           </table>
         </div>
 
-        <Image className="img" src="logo.png" width="300" height="300" alt="" />
+        <Image
+          className="img"
+          src="/logo.png"
+          width="300"
+          height="300"
+          alt=""
+        />
 
         <h4 className="h4">
           &quot;With your generosity, we can empower more challengers
@@ -123,14 +151,6 @@ export default function Donation() {
             $<input type="text" className="set-amount" placeholder="" />
           </div>
         </div>
-
-        {/* <div className="switch">
-					<input type="radio" className="switch-input" name="view" value="One-Time" id="one-time" />
-					<label htmlFor="one-time" className="switch-label switch-label-off">One-Time</label>
-					<input type="radio" className="switch-input" name="view" value="Monthly" id="monthly" />
-					<label htmlFor="monthly" className="switch-label switch-label-on">Monthly</label>
-					<span className="switch-selection"></span>
-			    </div> */}
 
         <div className="checkboxes">
           <input type="checkbox" id="receipt" className="checkbox" />
