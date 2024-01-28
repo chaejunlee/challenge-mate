@@ -12,7 +12,7 @@ export default function About() {
         <div className="border-b">
           <div className="flex h-16 items-center px-10">
             <Link href="/">
-              <Image src="/logo.png" alt="" width="200" height="200" />
+              <Image src="/logo.png" alt="" width="32" height="32" />
             </Link>
             <MainNav className="mx-6 grow" />
           </div>
