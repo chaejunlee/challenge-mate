@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Donation from "./donation/page";
 import "./landing.css";
+import Image from "next/image";
 
 export default function Landing() {
   return (
@@ -27,33 +27,45 @@ export default function Landing() {
           />
         </div>
       </div>
-<img className="img" src="logo.png" width="200" height="200"></img>
+      <Image className="img" src="logo.png" alt="" width="200" height="200" />
 
-<h2 className="h2">Our Mission Statement</h2>
-<p className="paragraph">"At Challengemate, our mission is to empower individuals with the tools, support, and daily guidance they need to transform their lives. <br></br>We believe in the power of companionship and accountability,<br></br> providing a platform where challengers set their goals and take meaningful steps toward achieving them every day. <br></br>Through our innovative approach, we aim to inspire hope, foster resilience, and create lasting positive change, one challenge at a time."
-</p>
+      <h2 className="h2">Our Mission Statement</h2>
+      <p className="paragraph">
+        &quot;At Challengemate, our mission is to empower individuals with the
+        tools, support, and daily guidance they need to transform their lives.{" "}
+        <br></br>We believe in the power of companionship and accountability,
+        <br></br> providing a platform where challengers set their goals and
+        take meaningful steps toward achieving them every day. <br></br>Through
+        our innovative approach, we aim to inspire hope, foster resilience, and
+        create lasting positive change, one challenge at a time.&quot;
+      </p>
 
-<img className="img" src="graph.jpg" width="500" height="400"></img>
-<h3 className="h3">Graph here</h3>
+      <Image className="img" src="graph.jpg" width="500" height="400" alt="" />
+      <h3 className="h3">Graph here</h3>
 
-<h2 className="h2">Rise to the Challenge, Together: Your Companion on the Path to Change!</h2>
+      <h2 className="h2">
+        Rise to the Challenge, Together: Your Companion on the Path to Change!
+      </h2>
 
+      <h1 className="h1">Our Impact</h1>
+      <h2 className="h2">Sub-title</h2>
 
-<h1 className="h1">Our Impact</h1>
-<h2 className="h2">Sub-title</h2>
+      <div className="content1">
+        <div className="red">1</div>
+        <div className="green">2</div>
+        <div className="blue">3</div>
+      </div>
 
-<div className="content1">
-  <div className="red">1</div>
-  <div className="green">2</div>
-  <div className="blue">3</div>
-</div>
+      <div className="flex flex-col items-center justify-center">
+        <button className="button1" type="button">
+          Sign In
+        </button>
+        <Link className="button2" href="/donation" target="_blank">
+          Donate
+        </Link>
+      </div>
 
-<div className="flex flex-col justify-center items-center">
-<button className="button1"  type="button">Sign In</button>
-<Link className="button2" href="/donation" target="_blank" >Donate</Link>
-</div>
-   
-<footer className="footer"> © Challenge Mates </footer>
+      <footer className="footer"> © Challenge Mates </footer>
 
       <button className="button1" type="button">
         Sign In
