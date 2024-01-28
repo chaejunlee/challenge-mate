@@ -207,3 +207,23 @@ export const usePoint = create<{
   point: 15,
   setPoint: (point) => set({ point }),
 }));
+
+export const people = [
+  {
+    role: "challenger",
+    name: "James Harrsion",
+    picture:
+      "https://images.pexels.com/photos/34534/people-peoples-homeless-male.jpg",
+    progress: "receive mental health counseling",
+    point: 15,
+  },
+  {
+    role: "challenge-mate",
+    name: "Wen Yahui",
+    picture:
+      "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    progress: "receive mental health counseling",
+    point: 15,
+    profession: "Therapist",
+  },
+] as const;

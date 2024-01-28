@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
+  people,
   progress,
   progressStep,
   useAlert,
@@ -43,7 +44,7 @@ export default function Main() {
   const role = useAppointmentStore((state) => state.role);
   const setOpen = useAlert((state) => state.setOpen);
 
-  console.log(appointments);
+  const person = people.filter((v) => v.role === role)[0];
 
   const events = appointments.map((appointment) => {
     const dateString = appointment.dateTime.split("T") as [string, string];
@@ -108,19 +109,27 @@ export default function Main() {
               <CardContent className="flex items-center gap-4">
                 <Avatar className="aspect-square h-24 w-24 object-cover">
                   <AvatarImage
-                    src="https://images.pexels.com/photos/34534/people-peoples-homeless-male.jpg"
-                    alt="James Harrison"
+                    src={person?.picture ?? ""}
+                    alt={person?.name ?? ""}
                     className="object-cover"
                   />
-                  <AvatarFallback>JH</AvatarFallback>
+                  <AvatarFallback>
+                    {person?.name
+                      .split(" ")
+                      .map((v) => v[0]?.toUpperCase())
+                      .join("")}
+                  </AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-3xl font-semibold">James Harrison</p>
+                  <p className="text-3xl font-semibold">{person?.name}</p>
                   <p className="font-semibold text-muted-foreground">
                     {role
                       ?.split("-")
                       .map((v) => v.charAt(0).toUpperCase() + v.slice(1))
                       .join(" ")}
+                    {person?.role === "challenge-mate"
+                      ? `, ${person.profession}`
+                      : ""}
                   </p>
                 </div>
               </CardContent>
@@ -340,22 +349,18 @@ function ChallengeMateHistory() {
                       <CardTitle className="pb-1 text-lg font-semibold">
                         {props.name}
                       </CardTitle>
-                      <p>
-                        <CardDescription>
-                          <span className="font-semibold text-black">
-                            Location:{" "}
-                          </span>
-                          {props.address}
-                        </CardDescription>
-                      </p>
-                      <p>
-                        <CardDescription>
-                          <span className="font-semibold text-black">
-                            Date & Time:{" "}
-                          </span>
-                          {props.dateTime.split("T").join(" ")}
-                        </CardDescription>
-                      </p>
+                      <CardDescription>
+                        <span className="font-semibold text-black">
+                          Location:{" "}
+                        </span>
+                        {props.address}
+                      </CardDescription>
+                      <CardDescription>
+                        <span className="font-semibold text-black">
+                          Date & Time:{" "}
+                        </span>
+                        {props.dateTime.split("T").join(" ")}
+                      </CardDescription>
                     </CardHeader>
                   </Card>
                 </div>
