@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useAppointmentStore } from "@/lib/state";
+import { useAlert, useAppointmentStore } from "@/lib/state";
 import { addHours, startOfHour } from "date-fns";
 import moment from "moment";
 import Link from "next/link";
@@ -22,13 +22,10 @@ const localizer = momentLocalizer(moment);
 
 const allViews: View[] = ["month", "week", "day", "agenda"];
 
-const endOfHour = (date: Date): Date => addHours(startOfHour(date), 1);
-const now = new Date();
-const start = endOfHour(now);
-const end = addHours(start, 2);
-
 export default function Main() {
   const appointments = useAppointmentStore((state) => state.appointments);
+  const role = useAppointmentStore((state) => state.role);
+  const setOpen = useAlert((state) => state.setOpen);
 
   const events = appointments.map((appointment) => {
     const dateString = appointment.dateTime.split("T") as [string, string];
@@ -76,11 +73,22 @@ export default function Main() {
                 </Avatar>
                 <div>
                   <p className="text-3xl font-semibold">James Harrison</p>
-                  <p className="font-semibold text-muted-foreground">
-                    Challenger
-                  </p>
+                  <p className="font-semibold text-muted-foreground">{role}</p>
                 </div>
               </CardContent>
+              <CardFooter className="flex gap-2">
+                <Button variant="destructive" asChild>
+                  <Link href="/api/auth/signout">Sign Out</Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setOpen(true);
+                  }}
+                >
+                  Change Role
+                </Button>
+              </CardFooter>
             </Card>
           </div>
           <div className="flex w-full gap-6">
