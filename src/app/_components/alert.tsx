@@ -1,21 +1,19 @@
 "use client";
 
 import {
-  AlertDialogFooter,
-  AlertDialogHeader,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
-import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogContent,
   AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { type ReactNode } from "react";
 import { useAlert, useAppointmentStore } from "@/lib/state";
+import { type ReactNode } from "react";
 
 export default function Alert({ children }: { children: ReactNode }) {
   const setRole = useAppointmentStore((state) => state.setRole);

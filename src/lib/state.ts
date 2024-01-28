@@ -2,7 +2,7 @@
 
 import { type getShelter } from "@/app/appointment/shelter";
 import { create } from "zustand";
-import { load, save } from "./db";
+import { save } from "./db";
 
 type Role = "challenger" | "challenge-supporter" | null;
 

@@ -1,24 +1,24 @@
 "use client";
 
-import Image from "next/image";
-import data from "./data";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTrigger,
-  DialogTitle,
   DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
-import { useState } from "react";
 import { usePoint } from "@/lib/state";
+import Image from "next/image";
+import { useState } from "react";
+import data from "./data";
 
 const rewards = data;
 

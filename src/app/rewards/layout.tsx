@@ -1,9 +1,9 @@
+import { Button } from "@/components/ui/button";
+import { getServerAuthSession } from "@/server/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { type ReactNode } from "react";
 import { MainNav } from "../_components/main-nav";
-import { getServerAuthSession } from "@/server/auth";
-import { Button } from "@/components/ui/button";
 
 export default async function RewardLayout({
   children,

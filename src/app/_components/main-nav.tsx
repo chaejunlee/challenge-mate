@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+import { useAlert, useAppointmentStore } from "@/lib/state";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { useAlert, useAppointmentStore } from "@/lib/state";
-import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 
 export function MainNav({

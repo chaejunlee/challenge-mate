@@ -1,12 +1,10 @@
 import "./style.css";
 
+import { getServerAuthSession } from "@/server/auth";
+import { unstable_noStore as noStore } from "next/cache";
+import Image from "next/image";
 import Link from "next/link";
 import { MainNav } from "../_components/main-nav";
-import Image from "next/image";
-import React from "react";
-import { getServerAuthSession } from "@/server/auth";
-import { Button } from "@/components/ui/button";
-import { unstable_noStore as noStore } from "next/cache";
 
 export default async function About() {
   noStore();
