@@ -106,7 +106,7 @@ export default function Donation() {
           </table>
         </div>
 
-        <Image className="img" src="logo.png" width="300" height="300" alt="" />
+        <Image className="img" src="/logo.png" width="300" height="300" alt="" />
 
         <h4 className="h4">
           &quot;With your generosity, we can empower more challengers
