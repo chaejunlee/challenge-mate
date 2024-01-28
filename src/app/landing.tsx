@@ -73,56 +73,53 @@ export default function Landing() {
       </h3>
 
       <div className="all flex flex-row items-center justify-center">
-  <div className="circle-wrap">
-    <div className="circle">
-      <div className="mask full-1">
-        <div className="fill-1"></div>
-      </div>
-      <div className="mask half">
-        <div className="fill-1"></div>
-      </div>
-      <div className="inside-circle"> 85% </div>
-    </div>
-  </div>
-    <div className="circle-wrap">
-      <div className="circle">
-        <div className="mask full-2">
-          <div className="fill-2"></div>
-        </div>
-        <div className="mask half">
-          <div className="fill-2"></div>
-        </div>
-        <div className="inside-circle"> 92% </div>
-      </div>
-    </div>
-      <div className="circle-wrap">
-        <div className="circle">
-          <div className="mask full-3">
-            <div className="fill-3"></div>
+        <div className="circle-wrap">
+          <div className="circle">
+            <div className="mask full-1">
+              <div className="fill-1"></div>
+            </div>
+            <div className="mask half">
+              <div className="fill-1"></div>
+            </div>
+            <div className="inside-circle"> 85% </div>
           </div>
-          <div className="mask half">
-            <div className="fill-3"></div>
+        </div>
+        <div className="circle-wrap">
+          <div className="circle">
+            <div className="mask full-2">
+              <div className="fill-2"></div>
+            </div>
+            <div className="mask half">
+              <div className="fill-2"></div>
+            </div>
+            <div className="inside-circle"> 92% </div>
           </div>
-          <div className="inside-circle"> 71% </div>
+        </div>
+        <div className="circle-wrap">
+          <div className="circle">
+            <div className="mask full-3">
+              <div className="fill-3"></div>
+            </div>
+            <div className="mask half">
+              <div className="fill-3"></div>
+            </div>
+            <div className="inside-circle"> 71% </div>
+          </div>
         </div>
       </div>
-    </div>
 
       <div className="content1">
         <div className="para">
-        <h4 className="h4">
-          Empowering Lives </h4>The Role of ChallengeMates in Social
-          Integration and Well-being
+          <h4 className="h4">Empowering Lives </h4>The Role of ChallengeMates in
+          Social Integration and Well-being
         </div>
         <div className="para">
-        <h4 className="h4">
-          Community Synergy </h4> The Positive Impact of ChallengeMates
-          Partnerships with Libraries and Services
+          <h4 className="h4">Community Synergy </h4> The Positive Impact of
+          ChallengeMates Partnerships with Libraries and Services
         </div>
         <div className="para">
-        <h4 className="h4">
-          A Call for Action </h4>Public Support for Government Funding in
-          Homelessness Initiatives
+          <h4 className="h4">A Call for Action </h4>Public Support for
+          Government Funding in Homelessness Initiatives
         </div>
       </div>
 

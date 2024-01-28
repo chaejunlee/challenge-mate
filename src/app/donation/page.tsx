@@ -40,10 +40,10 @@ export default function Donation() {
           Join us in our journey to build a community where everyone has the
           opportunity to thrive.
           <br></br>
-          Your kindness today paves the way for a brighter tomorrow. 
+          Your kindness today paves the way for a brighter tomorrow.
           <br></br>
-          Thank you
-          for being a beacon of hope and a catalyst for positive change.
+          Thank you for being a beacon of hope and a catalyst for positive
+          change.
         </p>
 
         <h2 className="h2">2023 HUD Annual Homeless Assessment Report Data</h2>
