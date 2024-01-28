@@ -27,7 +27,7 @@ export default function Landing() {
           />
         </div>
       </div>
-      <Image className="img" src="logo.png" alt="" width="200" height="200" />
+      <Image className="img" src="/logo.png" alt="" width="200" height="200" />
 
       <h2 className="h2">Our Mission Statement</h2>
       <p className="paragraph">
@@ -40,7 +40,7 @@ export default function Landing() {
         create lasting positive change, one challenge at a time.&quot;
       </p>
 
-      <Image className="img" src="graph.jpg" width="500" height="400" alt="" />
+      <Image className="img" src="/graph.jpg" width="500" height="400" alt="" />
       <h3 className="h3">Graph here</h3>
 
       <h2 className="h2">

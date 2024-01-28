@@ -31,7 +31,7 @@ export default function About() {
       <main>
         <h1 className="h1">About Us</h1>
 
-        <img className="img" src="logo.png" width="200" height="200"></img>
+        <img className="img" src="/logo.png" width="200" height="200"></img>
 
 <p className="paragraph">
 We are ChallengeMates, a group of San Jose State University Students and tech professionals looking to build a Social Growth/Re-integration Web Platform by gamification of individual’s growth and accomplishments. 
