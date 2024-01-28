@@ -154,8 +154,9 @@ export default function Landing() {
               type="button"
               variant="secondary"
               className="px-10 py-8 text-2xl"
+              asChild
             >
-              Join Us
+              <Link href="/api/auth/signin">Join Us</Link>
             </Button>
             <Button className="px-10 py-8 text-2xl" asChild>
               <Link href="/donation" target="_blank">
