@@ -9,7 +9,7 @@ import {
 } from "@deck.gl/layers/typed";
 import DeckGL from "@deck.gl/react/typed";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   AttributionControl,
@@ -19,13 +19,10 @@ import {
   ScaleControl,
 } from "react-map-gl";
 import { shelter } from "./shelter";
+import { useQueryString } from "./utils";
 
 export const ROAD_RGB = [33, 33, 33] as [number, number, number];
 export const DESTINATION_RGB = [100, 100, 100];
-
-const ICON_MAPPING = {
-  marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
-};
 
 export function MainMap({
   noOverlap = false,
@@ -51,9 +48,8 @@ export function MainMap({
     bearing: 0,
   });
   const router = useRouter();
-
-  const url = new URL(window.location.href);
-  const params = new URLSearchParams(url.search);
+  const pathname = usePathname();
+  const createQueryString = useQueryString();
 
   const scale = 2 ** location.zoom;
   const sizeMaxPixels = (scale / 3) * fontSize;
@@ -190,11 +186,9 @@ export function MainMap({
             return;
           }
 
-        if (params.has("destination"))
-          params.set("destination", coordinates.join(",") ?? "");
-        else params.append("destination", coordinates.join(",") ?? "");
-
-        router.push(`?${params.toString()}`);
+        router.push(
+          `${pathname}?${createQueryString("destination", coordinates.join(","))}`,
+        );
 
         setDestination([coordinates[0], coordinates[1]]);
       },

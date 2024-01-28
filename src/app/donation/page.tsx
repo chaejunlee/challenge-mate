@@ -1,3 +1,4 @@
+import Image from "next/image";
 import "./style.css";
 
 import { unstable_noStore as noStore } from "next/cache";
@@ -30,8 +31,6 @@ export default function Donation() {
       </header>
       <main>
         <h1 className="h1">Donation</h1>
-
-
 <p className="paragraph">Your support is the cornerstone of our mission. With your generosity, we can provide vital assistance and guidance to individuals striving to overcome challenges and rebuild their lives. Your donation directly fuels our efforts to empower, uplift, and inspire hope in those facing adversity. Together, we can make a profound difference, creating opportunities for growth, resilience, and transformation. Every contribution, no matter the size, has the power to create lasting impact. Join us in our journey to build a community where everyone has the opportunity to thrive. Your kindness today paves the way for a brighter tomorrow. Thank you for being a beacon of hope and a catalyst for positive change.
 </p>
 
@@ -137,6 +136,5 @@ export default function Donation() {
         </div>
       </main>
     </>
-      
   );
 }

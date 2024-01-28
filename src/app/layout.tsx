@@ -24,6 +24,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
+        <footer className="mb-10 mt-20 overflow-hidden text-center font-sans text-sm text-muted-foreground">
+          © Challange Mates
+        </footer>
       </body>
     </html>
   );
