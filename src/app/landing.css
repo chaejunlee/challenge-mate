@@ -1,16 +1,23 @@
 .h2 {
   color: #8ec9c6;
-  /* text-shadow: #04538c 2px 2px; */
   font-size: 30px;
   text-align: center;
   padding: 20px;
 }
 
-.paragraph {
-  color: rgb(0, 0, 0);
-  font-size: 15px;
+.h3 {
+  color: #04538c;
+  font-size: 30px;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
+}
+
+
+.paragraph {
+  color: #04538c;
+  font-size: 18px;
+  text-align: center;
+  padding: 30px;
 }
 
 .img {
@@ -59,7 +66,6 @@
   transition-duration: 0.4s;
   cursor: pointer;
   margin: auto;
-  display: flex;
   align-items: center;
   margin-top: 20px;
   padding-left: 50px;
@@ -70,6 +76,51 @@
   background-color: #04538c;
   color: white;
 }
+
+
+.content,
+.content1,
+.content2 {
+  color: #fff;
+  font: 100 24px/100px sans-serif;
+  height: 150px;
+  width: 897px;
+  margin: auto;
+  text-align: center;
+}
+
+.content div,
+.content1 div,
+.content2 div {
+  height: 50%;
+  width: 300px;
+  margin: auto;
+  text-align: center;
+}
+.red {
+  background: orangered;
+}
+.green {
+  background: yellowgreen;
+}
+.blue {
+  background: steelblue;
+}
+
+/* Flexbox Styles */
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.content1 {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.content2 {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
 
 .footer {
   text-align: center;
