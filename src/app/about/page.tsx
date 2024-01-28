@@ -31,7 +31,7 @@ export default function About() {
       <main>
         <h1 className="h1">About Us</h1>
 
-        <img className="img" src="logo.png" width="200" height="200"></img>
+        <img className="img" src="/logo.png" width="200" height="200"></img>
 
         <p className="paragraph">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
