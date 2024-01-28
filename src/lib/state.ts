@@ -212,8 +212,7 @@ export const people = [
   {
     role: "challenger",
     name: "James Harrsion",
-    picture:
-      "https://images.pexels.com/photos/34534/people-peoples-homeless-male.jpg",
+    picture: "/challenger-profile.jpeg",
     progress: "receive mental health counseling",
     point: 15,
   },
