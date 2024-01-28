@@ -164,13 +164,15 @@ html {
 /* ----------------------------------------- */
 button {
 	overflow: visible;
+	color: #04538c;
   }
   
   button, select {
 	text-transform: none;
+	color: #04538c;
   }
   
-  button, input, select, textarea {
+  input, select, textarea {
 	color: #5A5A5A;
 	font: inherit;
 	margin: 0;

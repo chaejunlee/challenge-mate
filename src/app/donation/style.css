@@ -16,6 +16,21 @@ html {
   padding: 20px;
 }
 
+.h3 {
+  color: #04538c;
+  font-size: 30px;
+  text-align: center;
+  padding: 20px;
+}
+
+.h4 {
+  color: #04538c;
+  font-size: 22px;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
+}
+
 .paragraph {
   color: rgb(0, 0, 0);
   font-size: 15px;
@@ -346,7 +361,7 @@ html {
   
   thead {
     th {
-      background-color: #04538c;
+      background-color: #8ec9c6;
     }
   }
   
