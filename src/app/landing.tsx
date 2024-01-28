@@ -68,8 +68,8 @@ export default function Landing() {
 
       <h2 className="h2">Our Impact</h2>
       <h3 className="h3">
-        "Community Perspectives on ChallengeMates: <br></br> A Survey on
-        Homelessness Initiatives"
+        &quot;Community Perspectives on ChallengeMates: <br></br> A Survey on
+        Homelessness Initiatives&quot;
       </h3>
 
       <div className="all flex flex-row items-center justify-center">

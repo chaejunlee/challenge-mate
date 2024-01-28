@@ -172,7 +172,7 @@ export default function About() {
                 name="name"
                 id="name_input"
                 required
-              ></input>
+               />
             </div>
             <div className="email">
               <label htmlFor="email"></label>
@@ -182,7 +182,7 @@ export default function About() {
                 name="email"
                 id="email_input"
                 required
-              ></input>
+               />
             </div>
             <div className="telephone">
               <label htmlFor="name"></label>
@@ -192,7 +192,7 @@ export default function About() {
                 name="telephone"
                 id="telephone_input"
                 required
-              ></input>
+               />
             </div>
             <div className="subject">
               <label htmlFor="subject"></label>

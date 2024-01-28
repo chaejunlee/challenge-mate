@@ -136,7 +136,7 @@ export default function Donation() {
                 name="name"
                 id="name_input"
                 required
-              ></input>
+               />
             </div>
             <div className="email">
               <label htmlFor="email"></label>
@@ -146,7 +146,7 @@ export default function Donation() {
                 name="email"
                 id="email_input"
                 required
-              ></input>
+               />
             </div>
             <div className="subject">
               <label htmlFor="subject"></label>
@@ -170,7 +170,7 @@ export default function Donation() {
             </div>
             <label className="container">
               I would like to donate anonymously.
-              <input type="checkbox" checked="checked"></input>
+              <input type="checkbox" />
               <span className="checkmark"></span>
             </label>
 
