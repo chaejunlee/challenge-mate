@@ -98,7 +98,9 @@ export default function Reward() {
       </div>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="mb-2 text-2xl">Use Your Point</DialogTitle>
+          <DialogTitle className="mb-2 text-2xl">
+            Use Your {bought ? "Voucher" : "Point"}
+          </DialogTitle>
           <div className="flex gap-4">
             <div className="relative aspect-square w-40 overflow-hidden rounded-lg border bg-muted bg-cover">
               <Image
