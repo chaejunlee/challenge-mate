@@ -168,14 +168,15 @@ h3.name {
 /* ----------------------------------------- */
 button {
   overflow: visible;
+  color: #04538c;
 }
 
 button,
 select {
   text-transform: none;
+  color: #04538c;
 }
 
-button,
 input,
 select,
 textarea {
