@@ -21,7 +21,7 @@ import {
 import { shelter } from "./shelter";
 import { useQueryString } from "./utils";
 
-export const ROAD_RGB = [4, 33, 89] as [number, number, number];
+export const ROAD_RGB = [33, 36, 217] as [number, number, number];
 export const DESTINATION_RGB = [233, 44, 38];
 
 const ICON_MAPPING = {
@@ -94,22 +94,16 @@ export function MainMap({
     radius?: number;
     color: [number, number, number];
     price: number;
+    offset?: number;
   };
 
-  const locationPoint = [
-    {
-      name: "Me",
-      coordinates: [currentLocation.longitude, currentLocation.latitude],
-      radius: 64,
-      color: [231, 180, 30],
-    },
-    destination && {
-      name: "Destination",
-      coordinates: destination,
-      radius: 64,
-      color: DESTINATION_RGB,
-    },
-  ];
+  const destinationPoint = {
+    name: "Destination",
+    coordinates: destination,
+    radius: 64,
+    color: DESTINATION_RGB,
+    offset: 16,
+  };
 
   const layers = [
     geoJson
@@ -129,9 +123,31 @@ export function MainMap({
           getElevation: 5,
         })
       : null,
+    new ScatterplotLayer<LayerData>({
+      id: "location-point-layer",
+      data: [
+        {
+          name: "Me",
+          coordinates: [currentLocation.longitude, currentLocation.latitude],
+          radius: 64,
+          color: [14, 119, 194],
+        },
+      ],
+      pickable: true,
+      stroked: true,
+      filled: true,
+      radiusScale: 6,
+      radiusMinPixels: 6,
+      lineWidthMinPixels: 8,
+      getPosition: (d) => d.coordinates,
+      getRadius: (d) => 16,
+      getFillColor: (d) => d.color,
+      getLineColor: (d) => [205, 230, 250],
+      getLineWidth: 2,
+    }),
     new IconLayer<LayerData>({
       id: "shelter-icon-layer",
-      data: [...shelter, ...locationPoint.filter(Boolean)],
+      data: [...shelter, destinationPoint].filter(Boolean) as LayerData[],
       iconAtlas:
         "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png",
       iconMapping: ICON_MAPPING,
