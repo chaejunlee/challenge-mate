@@ -51,7 +51,7 @@ export default function Reward() {
       <div className="container mx-auto mt-6 max-w-4xl">
         <div className="flex items-end justify-between">
           <div>
-            <h1 className="text-4xl font-bold">Rewards</h1>
+            <h1 className="text-4xl font-bold text-primary">Rewards</h1>
             <h4 className="mt-2">Redeem your points for rewards</h4>
           </div>
           <div>

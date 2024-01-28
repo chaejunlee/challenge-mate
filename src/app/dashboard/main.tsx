@@ -74,7 +74,7 @@ export default function Main() {
 
   return (
     <div className="container mt-6">
-      <h1 className="text-4xl font-bold">Dashboard</h1>
+      <h1 className="text-4xl font-bold text-primary">Dashboard</h1>
       <div className="mt-6 grid grid-cols-[minmax(0,2fr)_minmax(10rem,1fr)] gap-6">
         <div className="flex flex-col gap-6">
           <Card>

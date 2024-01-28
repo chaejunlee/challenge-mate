@@ -21,8 +21,8 @@ import {
 import { shelter } from "./shelter";
 import { useQueryString } from "./utils";
 
-export const ROAD_RGB = [33, 33, 33] as [number, number, number];
-export const DESTINATION_RGB = [4, 83, 139];
+export const ROAD_RGB = [4, 33, 89] as [number, number, number];
+export const DESTINATION_RGB = [233, 44, 38];
 
 const ICON_MAPPING = {
   marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
@@ -101,7 +101,7 @@ export function MainMap({
       name: "Me",
       coordinates: [currentLocation.longitude, currentLocation.latitude],
       radius: 64,
-      color: [255, 0, 0],
+      color: [231, 180, 30],
     },
     destination && {
       name: "Destination",

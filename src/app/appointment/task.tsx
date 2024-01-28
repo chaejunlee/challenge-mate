@@ -32,7 +32,9 @@ export default function Task({
   return (
     <Dialog>
       <div className="p-6">
-        <h1 className="mb-6 text-3xl font-bold">Today&apos;s Task</h1>
+        <h1 className="mb-6 text-3xl font-bold text-primary">
+          Today&apos;s Task
+        </h1>
         <Card>
           <CardHeader>
             <CardTitle>Receiving Depression Therapy</CardTitle>
