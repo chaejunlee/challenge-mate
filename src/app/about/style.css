@@ -12,22 +12,36 @@ html {
 }
 
 .h2 {
-  color: #8ec9c6;
-  /* text-shadow: #04538c 2px 2px; */
+  color: #04538c;
   font-size: 30px;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.h3 {
+  color: #161717;
+  font-size: 18px;
   text-align: center;
   padding: 20px;
 }
 
-h3.name {
-  width: 100%;
+.h4 {
+  color: #04538c;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .paragraph {
-  color: rgb(0, 0, 0);
-  font-size: 15px;
+  color: #161717;
+  font-size: 18px;
   text-align: center;
-  padding: 40px;
+  padding: 30px;
+}
+
+h3.name {
+  width: 100%;
 }
 
 .img {
@@ -207,30 +221,6 @@ h1 {
   text-transform: uppercase;
 }
 
-.underline {
-  border-bottom: solid 2px #04538c;
-  margin: -0.512em auto;
-  width: 80px;
-}
-
-.icon_wrapper {
-  margin: 50px auto 0;
-  width: 100%;
-}
-
-.icon {
-  display: block;
-  fill: #04538c;
-  height: 50px;
-  margin: 0 auto;
-  width: 50px;
-}
-
-.email {
-  float: right;
-  width: 45%;
-}
-
 input[type="text"],
 [type="email"],
 select,
@@ -323,6 +313,7 @@ textarea {
   background: none;
   border: solid 2px #04538c;
   color: #04538c;
+  border-radius: 10px;
   cursor: pointer;
   display: inline-block;
   font-family: "Helvetica", Arial, sans-serif;

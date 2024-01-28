@@ -9,15 +9,16 @@ html {
 }
 
 .h2 {
-  color: #8ec9c6;
+  color: #04538c;
   font-size: 30px;
   text-align: center;
   padding: 20px;
+  font-weight: bold;
 }
 
 .h3 {
-  color: #04538c;
-  font-size: 30px;
+  color: #161717;
+  font-size: 18px;
   text-align: center;
   padding: 20px;
 }
@@ -30,7 +31,7 @@ html {
 }
 
 .paragraph {
-  color: #04538c;
+  color: #161717;
   font-size: 18px;
   text-align: center;
   padding: 30px;
@@ -106,21 +107,20 @@ html {
 .content1 div,
 .content2 div {
   height: 50%;
-  width: 300px;
+  width: 500px;
   margin: auto;
   text-align: center;
+  gap: 30px;
 }
-.red {
-  color: rgb(0, 0, 0);
-
+.para {
+  color: #161717;
+  font-size: 15px;
 }
-.green {
-  color: rgb(0, 0, 0);
 
-}
-.blue {
-  color: rgb(0, 0, 0);
-
+.per {
+  font-size: 50px;
+  font-weight: bold;
+  color: #8ec9c6;
 }
 
 /* Flexbox Styles */
@@ -137,8 +137,7 @@ html {
   flex-wrap: wrap-reverse;
 }
 
-
-.bar{
+.bar {
   height: 30px;
   max-width: 800px;
   margin: 0 auto 10px auto;
@@ -148,8 +147,8 @@ html {
   padding: 0 0 0 10px;
   position: relative;
 }
-.bar::before{
-  content: '';
+.bar::before {
+  content: "";
   width: 100%;
   position: absolute;
   left: 0;
@@ -158,8 +157,8 @@ html {
   z-index: -2;
   background: #ecf0f1;
 }
-.bar::after{
-  content: '';
+.bar::after {
+  content: "";
   background: #8ec9c6;
   height: 30px;
   transition: 0.7s;
@@ -172,33 +171,148 @@ html {
   z-index: -1;
 }
 
-@-webkit-keyframes bar-before{
-  0%{
+@-webkit-keyframes bar-before {
+  0% {
     width: 0px;
   }
-  100%{
+  100% {
     width: 100%;
   }
 }
 
-.bar1::after{
+.bar1::after {
   max-width: 78%;
 }
 
-.bar2::after{
+.bar2::after {
   max-width: 85%;
 }
 
-.bar3::after{
+.bar3::after {
   max-width: 78%;
 }
 
-.bar4::after{
+.bar4::after {
   max-width: 74%;
 }
 
-.bar5::after{
+.bar5::after {
   max-width: 85%;
+}
+
+
+/* Circle Animation */
+.all{
+  display: flex;
+  margin: auto;
+  align-items: center;
+}
+.circle-wrap {
+  display: grid;
+  grid-template-columns: repeat(1, 160px);
+  grid-gap: 150px;
+  margin-top: 100px;
+  margin-left: 50px;
+  width: 150px;
+  height: 150px;
+  background: #d9d7da;
+  border-radius: 50%;
+}
+
+.circle-wrap .circle .mask,
+.circle-wrap .circle .fill-1,
+.circle-wrap .circle .fill-2,
+.circle-wrap .circle .fill-3 {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 50%;
+  
+}
+
+.circle-wrap .circle .mask {
+  clip: rect(0px, 150px, 150px, 75px);
+}
+
+.circle-wrap .inside-circle {
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  background: #ffffff;
+  line-height: 120px;
+  text-align: center;
+  margin-top: 13px;
+  margin-left: 13px;
+  color: #8ec9c6;
+  position: absolute;
+  z-index: 100;
+  font-weight: 700;
+  font-size: 2em;
+}
+
+/* color animation */
+
+.mask .fill-1 {
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: #8ec9c6;
+}
+
+.mask.full-1,
+.circle .fill-1 {
+  animation: fill-1 ease-in-out 3s;
+  transform: rotate(153deg);
+}
+
+@keyframes fill-1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(153deg);
+  }
+}
+
+/* 2nd bar */
+
+.mask .fill-2 {
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: #8ec9c6;
+}
+
+.mask.full-2,
+.circle .fill-2 {
+  animation: fill-2 ease-in-out 3s;
+  transform: rotate(117deg);
+}
+
+@keyframes fill-2{
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(117deg);
+  }
+}
+
+/* 3rd progress bar */
+.mask .fill-3 {
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: #8ec9c6;
+}
+
+.mask.full-3,
+.circle .fill-3 {
+  animation: fill-3 ease-in-out 3s;
+  transform: rotate(135deg);
+}
+
+@keyframes fill-3{
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(135deg);
+  }
 }
 
 

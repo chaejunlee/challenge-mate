@@ -39,36 +39,101 @@ export default function Landing() {
         create lasting positive change, one challenge at a time.&quot;
       </p>
 
-      <h3 className="h3">What do you think are potential solutions or feasible ways to help homeless people in America reintegrate into society?</h3>
+      <h2 className="h2">We asked various professionals:</h2>
+      <h3 className="h3">
+        What do you think are potential solutions or feasible ways <br></br>to
+        help homeless people in America reintegrate into society?
+      </h3>
       <div className="graph-cont">
-      <h4 className="h4">Providing a helping hand, instilling hope, and changing perceptions for the homeless</h4>
-      <div className="bar bar1">78%</div>
-      <h4 className="h4">Re-education and re-socialization of the homeless</h4>
-      <div className="bar bar2">85%</div>
-      <h4 className="h4">Offering vocational training and job opportunities</h4>
-      <div className="bar bar3">78%</div>
-      <h4 className="h4">Providing shelter and economic support</h4>
-      <div className="bar bar4">74%</div>
-      <h4 className="h4">Offering psychological counseling and drug rehabilitation</h4>
-      <div className="bar bar5">85%</div>
+        <h4 className="h4">
+          Providing a helping hand, instilling hope, and changing perceptions
+          for the homeless
+        </h4>
+        <div className="bar bar1">78%</div>
+        <h4 className="h4">
+          Re-education and re-socialization of the homeless
+        </h4>
+        <div className="bar bar2">85%</div>
+        <h4 className="h4">
+          Offering vocational training and job opportunities
+        </h4>
+        <div className="bar bar3">78%</div>
+        <h4 className="h4">Providing shelter and economic support</h4>
+        <div className="bar bar4">74%</div>
+        <h4 className="h4">
+          Offering psychological counseling and drug rehabilitation
+        </h4>
+        <div className="bar bar5">85%</div>
+      </div>
+
+      <h2 className="h2">Our Impact</h2>
+      <h3 className="h3">
+        "Community Perspectives on ChallengeMates: <br></br> A Survey on
+        Homelessness Initiatives"
+      </h3>
+
+      <div className="all flex flex-row items-center justify-center">
+  <div className="circle-wrap">
+    <div className="circle">
+      <div className="mask full-1">
+        <div className="fill-1"></div>
+      </div>
+      <div className="mask half">
+        <div className="fill-1"></div>
+      </div>
+      <div className="inside-circle"> 85% </div>
+    </div>
+  </div>
+    <div className="circle-wrap">
+      <div className="circle">
+        <div className="mask full-2">
+          <div className="fill-2"></div>
+        </div>
+        <div className="mask half">
+          <div className="fill-2"></div>
+        </div>
+        <div className="inside-circle"> 92% </div>
+      </div>
+    </div>
+      <div className="circle-wrap">
+        <div className="circle">
+          <div className="mask full-3">
+            <div className="fill-3"></div>
+          </div>
+          <div className="mask half">
+            <div className="fill-3"></div>
+          </div>
+          <div className="inside-circle"> 71% </div>
+        </div>
+      </div>
+    </div>
+
+      <div className="content1">
+        <div className="para">
+        <h4 className="h4">
+          Empowering Lives </h4>The Role of ChallengeMates in Social
+          Integration and Well-being
+        </div>
+        <div className="para">
+        <h4 className="h4">
+          Community Synergy </h4> The Positive Impact of ChallengeMates
+          Partnerships with Libraries and Services
+        </div>
+        <div className="para">
+        <h4 className="h4">
+          A Call for Action </h4>Public Support for Government Funding in
+          Homelessness Initiatives
+        </div>
       </div>
 
       <h2 className="h2">
-        Rise to the Challenge, Together: Your Companion on the Path to Change!
+        Rise to the Challenge, Together: <br></br>Your Companion on the Path to
+        Change!
       </h2>
-
-      <h1 className="h1">Our Impact</h1>
-      <h2 className="h2">"Community Perspectives on ChallengeMates: A Survey on Homelessness Initiatives"</h2>
-
-      <div className="content1">
-        <div className="red"> 85% <br></br>Empowering Lives: The Role of ChallengeMates in Social Integration and Well-being</div>
-        <div className="green"> 92% <br></br>Community Synergy: The Positive Impact of ChallengeMates Partnerships with Libraries and Services</div>
-        <div className="blue"> 71% <br></br>A Call for Action: Public Support for Government Funding in Homelessness Initiatives</div>
-      </div>
 
       <div className="flex flex-col items-center justify-center">
         <button className="button1" type="button">
-          Sign In
+          Join Us
         </button>
         <Link className="button2" href="/donation" target="_blank">
           Donate
