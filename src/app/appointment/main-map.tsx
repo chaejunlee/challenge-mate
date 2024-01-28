@@ -22,20 +22,16 @@ import { shelter } from "./shelter";
 import { useQueryString } from "./utils";
 
 export const ROAD_RGB = [33, 33, 33] as [number, number, number];
-export const DESTINATION_RGB = [100, 100, 100];
+export const DESTINATION_RGB = [4, 83, 139];
 
 const ICON_MAPPING = {
   marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
 };
 
 export function MainMap({
-  noOverlap = false,
-  fontSize = 32,
   destination,
   setDestination,
 }: {
-  noOverlap?: boolean;
-  fontSize?: number;
   destination: [number, number] | null;
   setDestination: (destination: [number, number] | null) => void;
 }) {
@@ -54,10 +50,6 @@ export function MainMap({
   const router = useRouter();
   const pathname = usePathname();
   const createQueryString = useQueryString();
-
-  const scale = 2 ** location.zoom;
-  const sizeMaxPixels = (scale / 3) * fontSize;
-  const sizeMinPixels = Math.min(scale / 1000, 0.5) * fontSize;
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -137,36 +129,19 @@ export function MainMap({
           getElevation: 5,
         })
       : null,
-    new ScatterplotLayer<LayerData>({
-      id: "scatterplot-layer",
-      data: locationPoint.filter(Boolean),
-      pickable: true,
-      getPosition: (d) => d.coordinates,
-      getRadius: (d) => d.radius!,
-      getColor: (d) => d.color,
-    }),
     new IconLayer<LayerData>({
       id: "shelter-icon-layer",
-      data: shelter,
+      data: [...shelter, ...locationPoint.filter(Boolean)],
       iconAtlas:
         "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png",
       iconMapping: ICON_MAPPING,
       pickable: true,
-      sizeScale: 15,
+      sizeScale: 8,
       getIcon: (d) => "marker",
       getPosition: (d) => d.coordinates,
       getColor: (d) => d.color,
-      getSize: (d) => 10,
-
-      // @ts-expect-error - collisionEnabled is not in the types
-      collisionEnabled: noOverlap,
-      getCollisionPriority: (d: LayerData) => Math.log10(d.price),
-      collisionTestProps: {
-        sizeScale: fontSize * 2,
-        sizeMaxPixels: sizeMaxPixels * 2,
-        sizeMinPixels: sizeMinPixels * 2,
-      },
-      extensions: [new CollisionFilterExtension()],
+      getSize: (d) => 5,
+      getPixelOffset: (d) => [0, -20],
 
       onClick: (e) => {
         if (!e.object) {

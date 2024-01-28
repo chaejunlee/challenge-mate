@@ -1,4 +1,4 @@
-const SHELTER_RGB = [33, 33, 233];
+const SHELTER_RGB = [127, 171, 201];
 
 export const shelter = [
   {

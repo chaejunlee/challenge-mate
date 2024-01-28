@@ -55,12 +55,7 @@ export default function Main() {
       </ResizablePanel>
       <ResizableHandle />
       <ResizablePanel defaultSize={70}>
-        <MainMap
-          noOverlap
-          fontSize={28}
-          destination={destination}
-          setDestination={setDestination}
-        />
+        <MainMap destination={destination} setDestination={setDestination} />
       </ResizablePanel>
     </ResizablePanelGroup>
   );
