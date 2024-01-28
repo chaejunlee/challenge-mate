@@ -9,24 +9,6 @@ import { Button } from "@/components/ui/button";
 export default async function Donation() {
   const session = await getServerAuthSession();
 
-  if (!session) {
-    return (
-      <main className="container grid h-screen place-items-center">
-        <div className="grid place-items-center">
-          <h1 className="text-4xl font-bold">Challenge Mate 💪</h1>
-          <p className="mt-2 text-lg">
-            What doesn&apos;t kill you makes you stronger.
-          </p>
-          <Button asChild>
-            <Link href="/api/auth/signin" className="mt-4">
-              Sign Up
-            </Link>
-          </Button>
-        </div>
-      </main>
-    );
-  }
-
   return (
     <>
       <header className="">
