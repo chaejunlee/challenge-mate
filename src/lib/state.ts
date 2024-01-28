@@ -27,11 +27,13 @@ export const useAppointmentStore = create<State>((set) => ({
 }));
 
 export const saveAppointment = (appointments: State["appointments"]) => {
+  if (typeof localStorage === "undefined") return;
   const appointmentsString = JSON.stringify(appointments);
   localStorage.setItem("appointments", appointmentsString);
 };
 
 export const loadAppointment = () => {
+  if (typeof localStorage === "undefined") return;
   const appointmentsString = localStorage.getItem("appointments");
   if (appointmentsString) {
     const appointments = JSON.parse(
