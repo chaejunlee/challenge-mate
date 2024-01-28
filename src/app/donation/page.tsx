@@ -39,7 +39,7 @@ export default async function Donation() {
           </div>
         </div>
       </header>
-      <main>
+      <main className="mx-auto max-w-4xl">
         <h1 className="h1">Donate Today</h1>
 
         <h4 className="h4">Your support is the cornerstone of our mission.</h4>
@@ -73,7 +73,7 @@ export default async function Donation() {
           Total number of people experiencing homelessness in the United States:
           653,104
         </h4>
-        <div className="container flex justify-center">
+        <div className="donation-container flex justify-center">
           <table>
             <thead>
               <tr>
@@ -146,9 +146,9 @@ export default async function Donation() {
           to tackle their goals, break barriers, and thrive in their
           communities.&quot;
         </h4>
-        
+
         <div id="contactus">
-          <h1>&bull; Donate Here &bull;</h1>
+          <h1 className="h1">&bull; Donate Here &bull;</h1>
           <form action="#" method="post" id="contact_form">
             <div className="name">
               <label htmlFor="name"></label>
@@ -158,7 +158,7 @@ export default async function Donation() {
                 name="name"
                 id="name_input"
                 required
-               />
+              />
             </div>
             <div className="email">
               <label htmlFor="email"></label>
@@ -168,7 +168,7 @@ export default async function Donation() {
                 name="email"
                 id="email_input"
                 required
-               />
+              />
             </div>
             <div className="subject">
               <label htmlFor="subject"></label>

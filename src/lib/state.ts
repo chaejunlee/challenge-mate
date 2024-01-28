@@ -199,3 +199,11 @@ export const useProgress = create<ProgressState>((set) => ({
   progress: "receive mental health counseling",
   setProgress: (progress) => set({ progress }),
 }));
+
+export const usePoint = create<{
+  point: number;
+  setPoint: (point: number) => void;
+}>((set) => ({
+  point: 15,
+  setPoint: (point) => set({ point }),
+}));

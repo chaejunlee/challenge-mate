@@ -1,6 +1,3 @@
-html {
-}
-
 .h1 {
   color: #04538c;
   font-size: 50px;
@@ -76,7 +73,7 @@ form {
   margin: 50px 0;
 }
 
-h1 {
+.h1 {
   color: #04538c;
   font-size: 32px;
   font-weight: 700;
@@ -216,7 +213,7 @@ textarea {
 }
 
 @media screen and (max-width: 480px) {
-  h1 {
+  .h1 {
     font-size: 26px;
   }
 
@@ -230,7 +227,7 @@ textarea {
 }
 
 @media screen and (max-width: 420px) {
-  h1 {
+  .h1 {
     font-size: 18px;
   }
 
@@ -251,24 +248,8 @@ textarea {
   }
 }
 
-/* The container */
-.container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: #04538c;
-  padding-bottom: 20px;
-}
-
 /* Hide the browser's default checkbox */
-.container input {
+.donation-container input {
   position: absolute;
   opacity: 0;
   color: #04538c;
@@ -286,12 +267,12 @@ textarea {
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.donation-container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.donation-container input:checked ~ .checkmark {
   background-color: #04538c;
 }
 
@@ -303,12 +284,12 @@ textarea {
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.donation-container input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.donation-container .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -322,7 +303,7 @@ textarea {
 
 /* ----------------------------------------- */
 
-.container {
+.donation-container {
   margin: auto;
   align-items: center;
   text-align: center;

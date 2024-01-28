@@ -17,6 +17,7 @@ const config = {
       "images.fineartamerica.com",
       "i5.walmartimages.com",
       "assets.pbimgs.com",
+      "t3.ftcdn.net"
     ],
   },
 };

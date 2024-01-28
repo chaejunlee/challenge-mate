@@ -3,7 +3,7 @@
 import { type Route, getRoute } from "@/lib/getRoute";
 import { CollisionFilterExtension } from "@deck.gl/extensions/typed";
 import {
-  TextLayer,
+  IconLayer,
   GeoJsonLayer,
   ScatterplotLayer,
 } from "@deck.gl/layers/typed";
@@ -23,6 +23,10 @@ import { useQueryString } from "./utils";
 
 export const ROAD_RGB = [33, 33, 33] as [number, number, number];
 export const DESTINATION_RGB = [100, 100, 100];
+
+const ICON_MAPPING = {
+  marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
+};
 
 export function MainMap({
   noOverlap = false,
@@ -141,23 +145,18 @@ export function MainMap({
       getRadius: (d) => d.radius!,
       getColor: (d) => d.color,
     }),
-    new TextLayer<LayerData>({
-      id: "shelter-text-layer",
+    new IconLayer<LayerData>({
+      id: "shelter-icon-layer",
       data: shelter,
-      characterSet: "auto",
-      fontSettings: {
-        buffer: 8,
-      },
+      iconAtlas:
+        "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png",
+      iconMapping: ICON_MAPPING,
       pickable: true,
+      sizeScale: 15,
+      getIcon: (d) => "marker",
       getPosition: (d) => d.coordinates,
-      getText: (d) => d.name,
       getColor: (d) => d.color,
-      getSize: (d) => Math.pow(d.price, 0.2) / 40,
-
-      sizeScale: fontSize,
-      sizeMaxPixels,
-      sizeMinPixels,
-      maxWidth: 64 * 10,
+      getSize: (d) => 10,
 
       // @ts-expect-error - collisionEnabled is not in the types
       collisionEnabled: noOverlap,
@@ -197,7 +196,18 @@ export function MainMap({
 
   return (
     <div className="relative h-full w-full">
-      <DeckGL initialViewState={location} controller layers={layers}>
+      <DeckGL
+        initialViewState={location}
+        controller
+        layers={layers}
+        getTooltip={({ object }) => {
+          const ob = object as {
+            name: string;
+            address: string;
+          };
+          return ob && `${ob.name}\n${ob.address}`;
+        }}
+      >
         <Map
           attributionControl={false}
           mapStyle="mapbox://styles/mapbox/light-v10"

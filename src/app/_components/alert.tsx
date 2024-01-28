@@ -38,17 +38,39 @@ export default function Alert({ children }: { children: ReactNode }) {
           onValueChange={(value) => {
             setRole(value as "challenger" | "challenge-mate");
           }}
-          className="text-xl"
+          className="flex flex-col gap-6 text-xl"
         >
-          <div className="flex gap-3">
-            <RadioGroupItem value="challenger" id="challenger" />
-            <Label htmlFor="challenger">Challenger</Label>
+          <div className="flex items-start gap-3">
+            <RadioGroupItem
+              className="mt-1 h-6 w-6"
+              value="challenger"
+              id="challenger"
+            />
+            <Label className="text-xl" htmlFor="challenger">
+              Challenger
+              <p className="text-sm text-muted-foreground">
+                Individuals striving to achieve personal goals like finding a
+                job or a place to live, who commit to completing daily tasks for
+                progress.
+              </p>
+            </Label>
           </div>
-          <div className="flex gap-3">
-            <RadioGroupItem value="challenge-mate" id="challenge-mate" />
-            <Label htmlFor="challenge-mate">Challenge Mate</Label>
+          <div className="flex items-start gap-3">
+            <RadioGroupItem
+              className="mt-1 h-6 w-6"
+              value="challenge-mate"
+              id="challenge-mate"
+            />
+            <Label className="text-xl" htmlFor="challenge-mate">
+              Challenge Mate
+              <p className="text-sm text-muted-foreground">
+                Supportive individuals offering expertise, mentorship, or
+                encouragement to help Challengers succeed in their goals.
+              </p>
+            </Label>
           </div>
         </RadioGroup>
+
         <AlertDialogFooter>
           <AlertDialogAction asChild>
             <Button

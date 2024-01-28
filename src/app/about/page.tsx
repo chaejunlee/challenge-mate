@@ -6,8 +6,10 @@ import Image from "next/image";
 import React from "react";
 import { getServerAuthSession } from "@/server/auth";
 import { Button } from "@/components/ui/button";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function About() {
+  noStore();
   const session = await getServerAuthSession();
 
   if (!session) {
@@ -40,7 +42,7 @@ export default async function About() {
           </div>
         </div>
       </header>
-      <main>
+      <main className="mx-auto max-w-4xl">
         <h1 className="h1">About Us</h1>
 
         <Image
@@ -58,12 +60,14 @@ export default async function About() {
           Platform by gamification of individual’s growth and accomplishments.
           <br></br>
           <br></br>
-          Our mission statement is{" "}
-          <h4 className="h4">
-            “Hope for All, Challenge the Community for The Better.”{" "}
-          </h4>
-          <br></br>
-          <br></br>
+          Our mission statement is
+        </p>
+        <h3 className="h4">
+          &quot;Hope for All, Challenge the Community for The Better.&quot;
+        </h3>
+        <br></br>
+        <br></br>
+        <p>
           The United States Department of Housing and Urban Development
           estimated that there are 181,399 out of 653,104 people experiencing
           homelessness in the United States are based in California in January
@@ -184,7 +188,7 @@ export default async function About() {
         </div>
 
         <div id="contactus">
-          <h1>&bull; Contact Us &bull;</h1>
+          <h1 className="h1">&bull; Contact Us &bull;</h1>
           <form action="#" method="post" id="contact_form">
             <div className="name">
               <label htmlFor="name"></label>
@@ -194,7 +198,7 @@ export default async function About() {
                 name="name"
                 id="name_input"
                 required
-               />
+              />
             </div>
             <div className="email">
               <label htmlFor="email"></label>
@@ -204,7 +208,7 @@ export default async function About() {
                 name="email"
                 id="email_input"
                 required
-               />
+              />
             </div>
             <div className="telephone">
               <label htmlFor="name"></label>
@@ -214,7 +218,7 @@ export default async function About() {
                 name="telephone"
                 id="telephone_input"
                 required
-               />
+              />
             </div>
             <div className="subject">
               <label htmlFor="subject"></label>

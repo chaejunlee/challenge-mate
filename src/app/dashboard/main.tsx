@@ -106,10 +106,11 @@ export default function Main() {
                 <CardTitle>Profile</CardTitle>
               </CardHeader>
               <CardContent className="flex items-center gap-4">
-                <Avatar className="aspect-square h-24 w-24">
+                <Avatar className="aspect-square h-24 w-24 object-cover">
                   <AvatarImage
-                    src="https://github.com/chaejunlee.png"
-                    alt="@chaejunlee"
+                    src="https://images.pexels.com/photos/34534/people-peoples-homeless-male.jpg"
+                    alt="James Harrison"
+                    className="object-cover"
                   />
                   <AvatarFallback>JH</AvatarFallback>
                 </Avatar>
