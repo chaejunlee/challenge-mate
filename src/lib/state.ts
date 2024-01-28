@@ -78,7 +78,6 @@ export const useAppointmentStore = create<State>((set) => ({
   pushAppointment: (appointment) =>
     set((state) => {
       const appointments = [...state.appointments, appointment];
-      saveAppointment(appointments);
       return {
         appointments,
       };
@@ -89,20 +88,6 @@ export const useAppointmentStore = create<State>((set) => ({
     set({ role });
   },
 }));
-
-export const saveAppointment = (appointments: State["appointments"]) => {
-  const appointmentsString = JSON.stringify(appointments);
-  save("appointments", appointmentsString);
-};
-
-export const loadAppointment = () => {
-  if (typeof localStorage === "undefined") return;
-  const appointments = load<State["appointments"]>("appointments");
-  if (!appointments) return;
-  useAppointmentStore.setState({ appointments });
-};
-
-loadAppointment();
 
 type AlertDialog = {
   open: boolean;

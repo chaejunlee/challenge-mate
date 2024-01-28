@@ -24,7 +24,7 @@ import { getShelter } from "./shelter";
 import { usePathname, useRouter } from "next/navigation";
 import { useQueryString } from "./utils";
 import { use, useState } from "react";
-import { saveAppointment, useAppointmentStore } from "@/lib/state";
+import { useAppointmentStore } from "@/lib/state";
 
 const timeSlots = {
   "Jan 29, 2024": ["9:00 ~ 9:30", "13:00 ~ 13:30", "15:00 ~ 15:30"],

@@ -43,6 +43,8 @@ export default function Main() {
   const role = useAppointmentStore((state) => state.role);
   const setOpen = useAlert((state) => state.setOpen);
 
+  console.log(appointments);
+
   const events = appointments.map((appointment) => {
     const dateString = appointment.dateTime.split("T") as [string, string];
     const date = new Date(dateString[0]);
