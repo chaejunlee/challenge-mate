@@ -1,4 +1,3 @@
-import Image from "next/image";
 import "./style.css";
 
 import { unstable_noStore as noStore } from "next/cache";
@@ -30,62 +29,96 @@ export default function Donation() {
         </div>
       </header>
       <main>
-        <h1 className="h1">Donation</h1>
-<p className="paragraph">Your support is the cornerstone of our mission. With your generosity, we can provide vital assistance and guidance to individuals striving to overcome challenges and rebuild their lives. Your donation directly fuels our efforts to empower, uplift, and inspire hope in those facing adversity. Together, we can make a profound difference, creating opportunities for growth, resilience, and transformation. Every contribution, no matter the size, has the power to create lasting impact. Join us in our journey to build a community where everyone has the opportunity to thrive. Your kindness today paves the way for a brighter tomorrow. Thank you for being a beacon of hope and a catalyst for positive change.
+        <h1 className="h1">Donate Today</h1>
+
+<h4 className="h4">Your support is the cornerstone of our mission.</h4>
+
+
+<p className="paragraph">
+    With your generosity, we can provide vital assistance and guidance to individuals striving to overcome challenges and rebuild their lives. 
+   <br></br>
+    Your donation directly fuels our efforts to empower, uplift, and inspire hope in those facing adversity. 
+    <br></br>
+    Together, we can make a profound difference, creating opportunities for growth, resilience, and transformation. 
+    <br></br>
+    Every contribution, no matter the size, has the power to create lasting impact. 
+    <br></br>
+    Join us in our journey to build a community where everyone has the opportunity to thrive. 
+    <br></br>
+    Your kindness today paves the way for a brighter tomorrow. Thank you for being a beacon of hope and a catalyst for positive change.
 </p>
 
+<h3 className="h3">2023 HUD Annual Homeless Assessment Report Data</h3>
+<h4 className="h4">Total number of people experiencing homelessness in the United States: 653,104</h4>
 <div className="container flex justify-center">
 	<table>
-		<thead>
+
+        <thead>
 			<tr>
-				<th>Column 1</th>
-				<th>Column 2</th>
-				<th>Column 3</th>
-				<th>Column 4</th>
-				<th>Column 5</th>
+				<th>Sheltered</th>
+				<th>Unsheltered</th>
 			</tr>
 		</thead>
+
 		<tbody>
 			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
+				<td>396,494</td>
+				<td>256,610</td>
 			</tr>
+            </tbody>
+
+            <thead>
 			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
+				<th>Men</th>
+				<th>Women</th>
 			</tr>
+		</thead>
+        <tbody>
 			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
+				<td>395,160</td>
+				<td>250,009</td>
 			</tr>
+            </tbody>
+
+            <thead>
 			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
+				<th>Veterans</th>
+				<th>Chronically homeless</th>
 			</tr>
+		</thead>
+
+        <tbody>
 			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
+				<td>35,574</td>
+				<td>154,313</td>
 			</tr>
-		</tbody>
+            </tbody>
+
+            <thead>
+			<tr>
+				<th>Families with children</th>
+				<th>Unaccompanied youth</th>
+			</tr>
+		</thead>
+
+        <tbody>
+			<tr>
+				<td>186,084</td>
+				<td>34,703</td>
+			</tr>
+            </tbody>
+		
+		
+
+
 	</table>
 </div>
 
-<h2 className="h2">With your generosity, we can empower more challengers to tackle their goals, break barriers, and thrive in their communities</h2>
+<img className="img" src="logo.png" width="300" height="300"></img>
+
+<h4 className="h4">"With your generosity, we can empower more challengers 
+<br></br>
+to tackle their goals, break barriers, and thrive in their communities."</h4>
 
 <div className="donation-container">
             
