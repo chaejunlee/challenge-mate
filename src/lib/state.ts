@@ -82,7 +82,7 @@ export const useAppointmentStore = create<State>((set) => ({
         appointments,
       };
     }),
-  role: "challenger",
+  role: null,
   setRole: (role) => {
     save("role", role);
     set({ role });
