@@ -26,7 +26,9 @@ export function MainNav({
   }, [role, signedIn, setOpen]);
 
   const active = (href: string) => {
-    return pathname === href ? "text-primary" : "text-muted-foreground";
+    return pathname === href
+      ? "text-primary font-semibold"
+      : "text-muted-foreground";
   };
 
   return (
