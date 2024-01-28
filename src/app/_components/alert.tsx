@@ -36,7 +36,7 @@ export default function Alert({ children }: { children: ReactNode }) {
         <RadioGroup
           defaultValue={role ?? undefined}
           onValueChange={(value) => {
-            setRole(value as "challenger" | "challenge-mate");
+            setRole(value as "challenger" | "challenge-supporter");
           }}
           className="flex flex-col gap-6 text-xl"
         >
@@ -58,11 +58,11 @@ export default function Alert({ children }: { children: ReactNode }) {
           <div className="flex items-start gap-3">
             <RadioGroupItem
               className="mt-1 h-6 w-6"
-              value="challenge-mate"
-              id="challenge-mate"
+              value="challenge-supporter"
+              id="challenge-supporter"
             />
-            <Label className="text-xl" htmlFor="challenge-mate">
-              Challenge Mate
+            <Label className="text-xl" htmlFor="challenge-supporter">
+              Challenge Supporter
               <p className="text-sm text-muted-foreground">
                 Supportive individuals offering expertise, mentorship, or
                 encouragement to help Challengers succeed in their goals.

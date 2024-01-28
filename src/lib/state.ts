@@ -4,7 +4,7 @@ import { type getShelter } from "@/app/appointment/shelter";
 import { create } from "zustand";
 import { load, save } from "./db";
 
-type Role = "challenger" | "challenge-mate" | null;
+type Role = "challenger" | "challenge-supporter" | null;
 
 type State = {
   appointments: Array<
@@ -218,7 +218,7 @@ export const people = [
     point: 15,
   },
   {
-    role: "challenge-mate",
+    role: "challenge-supporter",
     name: "Wen Yahui",
     picture:
       "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",

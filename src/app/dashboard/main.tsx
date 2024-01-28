@@ -127,7 +127,7 @@ export default function Main() {
                       ?.split("-")
                       .map((v) => v.charAt(0).toUpperCase() + v.slice(1))
                       .join(" ")}
-                    {person?.role === "challenge-mate"
+                    {person?.role === "challenge-supporter"
                       ? `, ${person.profession}`
                       : ""}
                   </p>
